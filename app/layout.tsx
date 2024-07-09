@@ -8,7 +8,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { Toaster } from "@/components/ui/toaster";
 import { auth } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
  
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -16,7 +15,7 @@ const fontSans = FontSans({
 })
 
 export const metadata: Metadata = {
-  title: "One For All",
+  title: "One4All",
   description: "E-learning Platform",
 };
 
@@ -25,10 +24,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { userId } = auth()
-  if (!userId) {
-    redirect("/auth/sign-up")
-  }
+
   return (
     <ClerkProvider>
       <html lang="en">

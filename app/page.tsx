@@ -8,10 +8,19 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { courses_examples } from "@/constants";
 import Link from "next/link";
 import { speak } from "@/lib/text-to-speech";
+import { useAuth } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 
 
 export default function Home() {
+  
+  const {userId} = useAuth()
+  const router = useRouter()
+  if (!userId) {
+    router.push("/auth/sign-up")
+  }
+
   return (
     <div className="flex flex-col">
       <NavBar />
