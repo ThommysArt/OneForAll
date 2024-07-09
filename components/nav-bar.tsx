@@ -25,7 +25,7 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = () => {
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col z-10">
             <div className="flex flex-row justify-between items-center p-4 gap-20 h-16 backdrop-blur-sm">
                 <div className="flex flex-row items-center gap-4">
                     <div className="flex w-10 border rounded-md items-center">

@@ -3,13 +3,14 @@ import { NavBar } from "@/components/nav-bar";
 import RedirectButton from "@/components/redirect-button";
 import { SearchBar } from "@/components/search-bar";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { courses_examples } from "@/constants";
 import Link from "next/link";
 import { speak } from "@/lib/text-to-speech";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 
 
@@ -45,6 +46,8 @@ export default function Home() {
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-4 overscroll-y-auto">
+            <h2 className="text-lg font-bold">Courses</h2>
+            <Separator />
             {courses_examples.map((course)=> (
               <Card>
                 <CardHeader>
@@ -57,6 +60,18 @@ export default function Home() {
                 </CardFooter>
               </Card>
             ))}
+            <Separator className="mt-24" />
+            <h2 className="text-lg font-bold">Mentorship</h2>
+            <Separator />
+            <Card>
+              <CardHeader>
+                <CardDescription>Get in touch with the most skilled Professionals on our Platform. Contact Us to book your arranged Mentorship.</CardDescription>
+              </CardHeader>
+              <CardFooter className="flex flex-col justify-start">
+                <p className="text-md">Contact: <b className="text-violet-500">+237 658924833</b></p>
+                <p className="text-md">Email: <b className="text-violet-500">thomsonnguems@gmail.com</b></p>
+              </CardFooter>
+            </Card>
           </div>
         </CardContent>
       </Card>
