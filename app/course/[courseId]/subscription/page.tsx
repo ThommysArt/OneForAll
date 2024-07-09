@@ -5,10 +5,7 @@ import { SearchBar } from "@/components/search-bar";
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
 import Link from "next/link";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import SubsForm from "./_components/subs-form";
 import { courses_examples } from "@/constants";
 import { handleMouseHover } from "@/lib/text-to-speech";
@@ -27,11 +24,11 @@ export default function SubscriptionPage({params}: {params: {courseId: number}})
                         <BreadcrumbList>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                            <Link href={`/course/${course.id}`} className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("course")}>Course</Link>
+                                <Link href={`/course/${course.id}`} className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("course")}>Course</Link>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                            <Link href="/subscription" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("subscription")}>Subscription</Link>
+                                <Link href="/subscription" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("subscription")}>Subscription</Link>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                         </Breadcrumb>

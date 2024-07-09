@@ -26,7 +26,7 @@ export default async function CoursePage({params}: {params: {courseId: number}})
                   <BreadcrumbList>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <Link href="/course" className='px-2 text-sm text-muted-foreground hover:text-violet-400'>Course</Link>
+                      <Link href="/" className='px-2 text-sm text-muted-foreground hover:text-violet-400'>Course</Link>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>

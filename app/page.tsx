@@ -33,12 +33,9 @@ export default function Home() {
                   <BreadcrumbList>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <Link href="/courses" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>speak("Courses")}>Courses</Link>
+                      <Link href="/" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>speak("Courses")}>Courses</Link>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                      <Link href="/quizzes" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>speak("Quizzes")}>Quizzes</Link>
-                    </BreadcrumbItem>
                   </BreadcrumbList>
                 </Breadcrumb>
               </div>
