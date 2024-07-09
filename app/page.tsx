@@ -6,7 +6,7 @@ import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator } from 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { courses_examples } from "@/constants";
 import Link from "next/link";
-import { speak } from "@/lib/text-to-speech";
+import { handleMouseHover } from "@/lib/text-to-speech";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -34,7 +34,7 @@ export default function Home() {
                   <BreadcrumbList>
                     <BreadcrumbSeparator />
                     <BreadcrumbItem>
-                      <Link href="/" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>speak("Courses")}>Courses</Link>
+                      <Link href="/" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("Courses")}>Courses</Link>
                     </BreadcrumbItem>
                     <BreadcrumbSeparator />
                   </BreadcrumbList>
@@ -51,8 +51,8 @@ export default function Home() {
             {courses_examples.map((course)=> (
               <Card>
                 <CardHeader>
-                  <CardTitle onMouseOver={()=>speak(course.title)}>{course.title}</CardTitle>
-                  <CardDescription onMouseOver={()=>speak(course.description)}>{course.description}</CardDescription>
+                  <CardTitle onMouseOver={()=>handleMouseHover(course.title)}>{course.title}</CardTitle>
+                  <CardDescription onMouseOver={()=>handleMouseHover(course.description)}>{course.description}</CardDescription>
                 </CardHeader>
                 <CardFooter className="flex flex-col gap-2 md:flex-row md:gap-8">
                   <RedirectButton label="Open" href={`/course/${course.id}`}/>
@@ -61,15 +61,15 @@ export default function Home() {
               </Card>
             ))}
             <Separator className="mt-24" />
-            <h2 className="text-lg font-bold">Mentorship</h2>
+            <h2 className="text-lg font-bold" onMouseOver={()=>handleMouseHover("mentorship")}>Mentorship</h2>
             <Separator />
             <Card>
               <CardHeader>
-                <CardDescription>Get in touch with the most skilled Professionals on our Platform. Contact Us to book your arranged Mentorship.</CardDescription>
+                <CardDescription onMouseOver={()=>handleMouseHover("Get in touch with the most skilled Professionals on our Platform. Contact Us to book your arranged Mentorship.")}>Get in touch with the most skilled Professionals on our Platform. Contact Us to book your arranged Mentorship.</CardDescription>
               </CardHeader>
               <CardFooter className="flex flex-col justify-start">
-                <p className="text-md">Contact: <b className="text-violet-500">+237 658924833</b></p>
-                <p className="text-md">Email: <b className="text-violet-500">thomsonnguems@gmail.com</b></p>
+                <p className="text-md">Contact: <b className="text-violet-500" onMouseOver={()=>handleMouseHover("+237 658924833")}>+237 658924833</b></p>
+                <p className="text-md">Email: <b className="text-violet-500" onMouseOver={()=>handleMouseHover("thomsonnguems@gmail.com")}>thomsonnguems@gmail.com</b></p>
               </CardFooter>
             </Card>
           </div>
