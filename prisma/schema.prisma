@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+        
+
+model User {
+  userId String @id
+  fullname String
+  courses UserCourse[]
+  FinshedQuizzes FinishedQuiz[]
+}
+
+model Course {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  fullPrice Float
+  monthlyPrice Float
+  users UserCourse[] 
+  quizzes Quiz[]
+  lessons Lesson[]
+  videos Video[]
+  payments Payment[]
+  subscriptions Subscription[]
+}
+
+model UserCourse {
+  id Int @id @default(autoincrement())
+  userId String
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+  user User @relation(fields: [userId], references: [userId])
+}
+
+model Quiz {date DateTime
+  id Int @id @default(autoincrement())
+  title String
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+  questions Question[]
+  finishedQuiz FinishedQuiz[]
+}
+
+model FinishedQuiz {
+  id Int @id @default(autoincrement())
+  quizId Int
+  userId String
+  date DateTime
+  score Float
+  quiz Quiz @relation(fields: [quizId], references: [id])
+  user User @relation(fields: [userId], references: [userId])
+}
+
+model Question {
+  id Int @id @default(autoincrement())
+  quizId Int
+  quiz Quiz @relation(fields: [quizId], references: [id])
+  label String
+  options Option[]
+}
+
+model Option {
+  id Int @id @default(autoincrement())
+  questionId Int
+  question Question @relation(fields: [questionId], references: [id])
+  label String
+  isCorrect Boolean
+}
+
+model Lesson {
+  id Int @id @default(autoincrement())
+  title String
+  content String
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+}
+
+model Video {
+  id Int @id @default(autoincrement())
+  title String
+  url String
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+}
+
+model Payment {
+  id Int @id @default(autoincrement())
+  amount Float
+  date DateTime
+  courseId Int
+  course Course @relation(fields: [courseId], references: [id])
+}
+
+model Subscription {
+  id Int @id @default(autoincrement())
+  amount Float
+  courseId Int
+  date DateTime
+  course Course @relation(fields: [courseId], references: [id])
+}
