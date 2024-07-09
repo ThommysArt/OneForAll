@@ -1,3 +1,4 @@
+"use client"
 import { NavBar } from "@/components/nav-bar";
 import RedirectButton from "@/components/redirect-button";
 import { SearchBar } from "@/components/search-bar";

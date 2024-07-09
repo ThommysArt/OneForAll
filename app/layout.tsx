@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { Toaster } from "@/components/ui/toaster";
+import { auth } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
  
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -23,6 +25,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { userId } = auth()
+  if (!userId) {
+    redirect("/auth/sign-up")
+  }
   return (
     <ClerkProvider>
       <html lang="en">

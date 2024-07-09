@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { speak } from "@/lib/text-to-speech";
 
 interface RedirectButtonProps {
     href: string;
@@ -7,7 +8,7 @@ interface RedirectButtonProps {
 
 const RedirectButton: React.FC<RedirectButtonProps> = ({href, label}) => {
     return (
-        <Link href={href} className="text-violet-500 hover:text-violet-600 transition duration-200">
+        <Link href={href} className="text-violet-500 hover:text-violet-600 transition duration-200"  onMouseOver={()=>speak(label)}>
             {label}
         </Link>
     )

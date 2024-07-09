@@ -1,3 +1,4 @@
+"use client"
 import { NavBar } from "@/components/nav-bar";
 import RedirectButton from "@/components/redirect-button";
 import { SearchBar } from "@/components/search-bar";
@@ -10,6 +11,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import SubsForm from "./_components/subs-form";
 import { courses_examples } from "@/constants";
+import { handleMouseHover } from "@/lib/text-to-speech";
 
 export default function SubscriptionPage({params}: {params: {courseId: number}}) {
     const course = courses_examples.filter((course)=>course.id===+params.courseId)[0]
@@ -25,11 +27,11 @@ export default function SubscriptionPage({params}: {params: {courseId: number}})
                         <BreadcrumbList>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                            <Link href="/course" className='px-2 text-sm text-muted-foreground hover:text-violet-400'>Course</Link>
+                            <Link href={`/course/${course.id}`} className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("course")}>Course</Link>
                             </BreadcrumbItem>
                             <BreadcrumbSeparator />
                             <BreadcrumbItem>
-                            <Link href="/subscription" className='px-2 text-sm text-muted-foreground hover:text-violet-400'>Subscription</Link>
+                            <Link href="/subscription" className='px-2 text-sm text-muted-foreground hover:text-violet-400' onMouseOver={()=>handleMouseHover("subscription")}>Subscription</Link>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                         </Breadcrumb>

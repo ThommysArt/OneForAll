@@ -13,6 +13,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { handleMouseHover } from "@/lib/text-to-speech"
 
 interface DatePickerProps {
   date: Date,
@@ -41,6 +42,7 @@ const DatePicker: React.FC<DatePickerProps> = ({date, setDate}) => {
           selected={date}
           onSelect={setDate}
           initialFocus
+          onDayMouseEnter={(day)=>handleMouseHover(day.toDateString())}
         />
       </PopoverContent>
     </Popover>
